@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './components/pages/page-not-found/page-no
 import { SearchPageComponent } from './components/pages/search-page/search-page.component';
 import { SettingsPageComponent } from './components/pages/settings-page/settings-page.component';
 
-
+//DEV NOTE || LAZY LOAD EVERYTHING EXCEPT LANDING PAGE
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'search', component: SearchPageComponent }, //search results list and filtering

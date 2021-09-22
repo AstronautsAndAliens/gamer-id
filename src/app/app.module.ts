@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 import { SettingsPageComponent } from './components/pages/settings-page/settings-page.component';
 
+// DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED
 @NgModule({
   declarations: [
     AppComponent,
