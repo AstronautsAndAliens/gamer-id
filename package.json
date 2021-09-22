@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy-draft": "ng build && netlify deploy",
-    "deploy-prod": "ng build --prod && netlify deploy --prod"
+    "deploy-prod": "ng build && netlify deploy --prod"
   },
   "private": true,
   "dependencies": {
