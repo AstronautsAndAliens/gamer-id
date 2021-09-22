@@ -2,7 +2,7 @@
   publish = "dist/gamer-id-browser"
   command = "ng build --prod"
 [functions]
-  directory = "my_functions"
+  directory = "lambda"
 [[redirects]]
   from = "/*"
   to = "/index.html"
