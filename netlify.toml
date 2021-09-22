@@ -1,6 +1,8 @@
 [build]
   publish = "dist/gamer-id-browser"
   command = "ng build --prod"
+[functions]
+  directory = "my_functions"
 [[redirects]]
   from = "/*"
   to = "/index.html"
