@@ -12,10 +12,12 @@ export class PersonaPageComponent implements OnInit {
     private route: ActivatedRoute
     ) {}
   
-  personaId: any = ''
+  personaId: string = ''
   
   ngOnInit(): void {
-    this.personaId = this.route.snapshot.paramMap.get('personaId');
+    this.route.queryParams.subscribe(params => {
+      this.personaId = params['personaId']
+    })
   }
 
 }
