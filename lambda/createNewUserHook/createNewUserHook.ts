@@ -15,12 +15,15 @@ export const handler: Handler = async (event: any, context: any) => {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   console.log(newUser)
+  console.log(client)
   await client.connect((err: any) => {
+
+    if(err) {console.log(err)}
+
     const collection = client.db("gamer-id-db").collection("users");
     console.log('collection')
     collection.insert(newUser)
     client.close();
-    if(err) console.log(err)
   });
 
   return {
