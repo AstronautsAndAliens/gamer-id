@@ -9,10 +9,10 @@ export const handler: Handler = async (event:any, context:any) => {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   await client.connect();
-  await client.db("gamer-id-db").collection("persona").findOne({gamer_id})
-
+  const persona = await client.db("gamer-id-db").collection("persona").findOne({gamer_id: gamer_id})
+  console.log(persona)
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'success! new persona created in db' }),
+    body: JSON.stringify({ message: 'success! persona found!', persona }),
   }
 }
