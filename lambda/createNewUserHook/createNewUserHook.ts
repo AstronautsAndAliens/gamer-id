@@ -13,6 +13,8 @@ export const handler: Handler = async (event: any, context: any) => {
     auth0UserId: id,
     email
   }
+  console.log(event.queryStringParameters)
+  console.log(newPersona)
   const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
