@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'persona', pathMatch: 'full', redirectTo: '/search'},
   { 
     path: 'persona/:personaId',  //a players unique page
-    loadChildren: () => import('./components/pages/persona/persona.module').then(m => m.PersonaModule) //lazy load to keep massive components list and services seperate
+    loadChildren: () => import('./components/persona/persona.module').then(m => m.PersonaModule) //lazy load to keep massive components list and services seperate
   },
   { path: 'settings', component:  SettingsPageComponent }, //site and account settings & dashboard
   { path: '**', component: PageNotFoundComponent }

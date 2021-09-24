@@ -9,8 +9,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 import { SettingsPageComponent } from './components/pages/settings-page/settings-page.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthService } from './services/auth/auth.service';
+import { PrimaryButtonComponent } from './components/common/primary-button/primary-button.component';
+import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-buttons.component';
 
-// DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED
+// DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED IN OTHER MODULES
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +23,20 @@ import { SettingsPageComponent } from './components/pages/settings-page/settings
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    PrimaryButtonComponent,
+    AuthButtonsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule.forRoot({
+      domain: 'dev-wz5rreaa.us.auth0.com',
+      clientId: 'JEdJ7OiX4dPFILPKyjDKji1q61aLxBAa'
+    })
   ],
   providers: [
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

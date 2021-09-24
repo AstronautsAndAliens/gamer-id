@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PersonaPageComponent } from './persona-page.component';
+import { PersonaPageComponent } from '../pages/persona/persona-page.component';
 
 const routes: Routes = [
   {path: '', component: PersonaPageComponent} // path: /persona

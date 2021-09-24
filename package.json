@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@auth0/auth0-angular": "^1.7.0",
     "@netlify/functions": "^0.7.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
