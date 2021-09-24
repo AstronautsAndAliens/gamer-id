@@ -11,15 +11,14 @@ export const handler: Handler = async (event: any, context: any) => {
     email
   }
 
-  const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net/gamerId?retryWrites=true&w=majority";
+  const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  console.log(newUser)
   await client.connect();
-  await client.db("gamer-id-db").collection("users").insert(newUser)
+  await client.db("gamer-id-db").collection("users").insertOne(newUser)
 
   return {
     statusCode: 200,
-    body: JSON.stringify(newUser),
+    body: JSON.stringify({ message: 'new user created in db', newUser }),
   }
 }
