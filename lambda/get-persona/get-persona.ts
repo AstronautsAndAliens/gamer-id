@@ -5,7 +5,6 @@ const { MongoClient } = require('mongodb');
 export const handler: Handler = async (event:any, context:any) => {
   const { gamer_id = '' } = event.queryStringParameters
   console.log(gamer_id)
-  console.log(event)
   const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   await client.connect();

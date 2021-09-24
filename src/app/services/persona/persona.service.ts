@@ -37,10 +37,10 @@ export class PersonaService implements OnInit {
 
   getGamerPersona = (): Observable<any> => {
     console.log(this.gamerId)
-    const endpoint = '.netlify/functions/get-persona'
+    const endpoint = 'https://gamer-id.io/.netlify/functions/get-persona'
     const options = {
       params: new HttpParams({fromObject: { gamer_id: this.gamerId }})
     }
-    return this.http.get<any>(endpoint)
+    return this.http.get<any>(endpoint, options)
   }
 }
