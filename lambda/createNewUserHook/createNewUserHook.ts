@@ -11,7 +11,7 @@ export const handler: Handler = async (event: any, context: any) => {
     email
   }
 
-  const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net/gamer-id-db?retryWrites=true&w=majority";
+  const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net/gamerId?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   console.log(newUser)
