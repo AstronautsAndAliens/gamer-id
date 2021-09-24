@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { AuthService as Auth0Service  } from '@auth0/auth0-angular';
 import { User } from '@auth0/auth0-spa-js';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class PersonaService implements OnInit {
 
   persona$: any
-  gamerId: string | null | undefined
+  gamerId: string = ''
   gamer:any
 
   constructor(
@@ -19,23 +19,28 @@ export class PersonaService implements OnInit {
   ) { 
     this.persona$ = this.auth0.user$
     this.auth0.idTokenClaims$.subscribe(claims => {
-      console.log(claims);
-      
       if(claims && claims['https://gamer_id']) {
         this.gamerId = claims['https://gamer_id']
       } else {
         console.error('gamer_id not returned from auth0')
       }
     } )
+    this.gamer = this.getGamerPersona().subscribe(persona => {
+      console.log(persona)
+    })
   }
 
   ngOnInit(){
     //make request to db to get
-    this.gamer = this.getGamerPersona()
+    
   }
 
   getGamerPersona = (): Observable<any> => {
-    const endpoint = ''
+    console.log(this.gamerId)
+    const endpoint = '.netlify/functions/get-persona'
+    const options = {
+      params: new HttpParams({fromObject: { gamer_id: this.gamerId }})
+    }
     return this.http.get<any>(endpoint)
   }
 }
