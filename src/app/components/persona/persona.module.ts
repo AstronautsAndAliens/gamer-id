@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonaRoutingModule } from './persona-routing.module';
-import { PersonaService } from 'src/app/services/persona/persona.service';
 import { PersonaPageComponent } from '../pages/persona/persona-page.component';
 import { TestSteam1Component } from './Steam/test-steam1/test-steam1.component';
 import { TestSteamComponent } from './Steam/test-steam/test-steam.component';
@@ -27,7 +26,6 @@ import { BasicPersonaInfoComponent } from './123xyz/basic-persona-info/basic-per
     PersonaRoutingModule
   ],
   providers: [
-    PersonaService
   ]
 })
 export class PersonaModule { }

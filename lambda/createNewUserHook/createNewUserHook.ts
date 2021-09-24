@@ -6,11 +6,11 @@ import { v4 as uuidv4 } from 'uuid';
 //endpoint should be called everytime a new user is registered with auth0 db
 //saves information from auth0 user to db to begin account setup
 export const handler: Handler = async (event: any, context: any) => {
-  const { id = '', email = ''  } = event.queryStringParameters
+  const { user_id = '', email = '', gamer_id = ''  } = event.queryStringParameters
 
   const newPersona = {
-    id: uuidv4(),
-    auth0UserId: id,
+    gamer_id: uuidv4(),
+    auth0_user_id: user_id,
     email
   }
   console.log(event.queryStringParameters)

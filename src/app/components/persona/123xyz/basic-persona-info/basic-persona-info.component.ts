@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService as Auth0Service } from '@auth0/auth0-angular';
+import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
   selector: 'basic-persona-info',
@@ -9,12 +10,10 @@ import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 export class BasicPersonaInfoComponent implements OnInit {
 
   constructor(
-    public auth: Auth0Service
+    public personaService: PersonaService
   ) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => { console.log('user', user)})
-    this.auth.idTokenClaims$.subscribe(claims => { console.log('claims', claims)})
   }
 
 }

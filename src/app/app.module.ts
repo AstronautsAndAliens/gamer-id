@@ -13,6 +13,8 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { AuthService } from './services/auth/auth.service';
 import { PrimaryButtonComponent } from './components/common/primary-button/primary-button.component';
 import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-buttons.component';
+import { PersonaService } from './services/persona/persona.service';
+import { HttpClientModule } from '@angular/common/http';
 
 // DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED IN OTHER MODULES
 @NgModule({
@@ -29,6 +31,7 @@ import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-button
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AuthModule.forRoot({
       domain: 'dev-wz5rreaa.us.auth0.com',
@@ -36,7 +39,8 @@ import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-button
     })
   ],
   providers: [
-    AuthService
+    AuthService,
+    PersonaService
   ],
   bootstrap: [AppComponent]
 })

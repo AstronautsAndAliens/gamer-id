@@ -9,14 +9,13 @@ import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 export class AuthService {
 
   constructor(
-    public auth: Auth0Service
+    public auth0: Auth0Service
   ) { }
 
-  loginWithPopup = () => this.auth.loginWithPopup()
+  loginWithPopup = () => this.auth0.loginWithPopup()
 
-  logout = () => this.auth.logout({ returnTo: 'http://localhost:4200' })
+  logout = () => this.auth0.logout({ returnTo: 'http://localhost:4200' })
 
-  isAuthenticated = this.auth.isAuthenticated$
+  isAuthenticated = this.auth0.isAuthenticated$
 
-  auth0User = this.auth.user$
 }
