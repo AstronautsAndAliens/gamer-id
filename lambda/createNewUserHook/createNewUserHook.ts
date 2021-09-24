@@ -17,7 +17,7 @@ export const handler: Handler = async (event: any, context: any) => {
   console.log(newUser)
   await client.connect((err: any) => {
     const collection = client.db("gamer-id-db").collection("users");
-    console.log(collection)
+    console.log('collection')
     collection.insert(newUser)
     client.close();
     if(err) console.log(err)
