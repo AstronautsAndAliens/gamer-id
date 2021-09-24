@@ -13,7 +13,8 @@ export class BasicPersonaInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => { console.log(user)})
+    this.auth.user$.subscribe(user => { console.log('user', user)})
+    this.auth.idTokenClaims$.subscribe(claims => { console.log('claims', claims)})
   }
 
 }
