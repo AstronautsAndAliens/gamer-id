@@ -9,8 +9,9 @@ export const handler: Handler = async (event: any, context: any) => {
   const { user_id = '', email = '', gamer_id = ''  } = event.queryStringParameters
 
   const newPersona = {
-    gamer_id: uuidv4(),
+    id: uuidv4(),
     auth0_user_id: user_id,
+    gamer_id,
     email
   }
   console.log(event.queryStringParameters)
