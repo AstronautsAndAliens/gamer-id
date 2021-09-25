@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PersonaPageComponent } from '../pages/persona/persona-page.component';
+import { SettingsPageComponent } from './settings-page/settings-page.component';
 
 const routes: Routes = [
-  {path: '', component: PersonaPageComponent} // path: /persona
+  {path: '', component: SettingsPageComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PersonaRoutingModule { }
+export class SettingsRoutingModule { }

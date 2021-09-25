@@ -5,10 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { SearchPageComponent } from './components/pages/search-page/search-page.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/common/header/header.component';
+import { FooterComponent } from './components/common/footer/footer.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
-import { SettingsPageComponent } from './components/pages/settings-page/settings-page.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthService } from './services/auth/auth.service';
 import { PrimaryButtonComponent } from './components/common/primary-button/primary-button.component';
@@ -25,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    SettingsPageComponent,
     PrimaryButtonComponent,
     AuthButtonsComponent
   ],

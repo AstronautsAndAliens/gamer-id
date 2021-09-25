@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonaRoutingModule } from './persona-routing.module';
-import { PersonaPageComponent } from '../pages/persona/persona-page.component';
+import { PersonaPageComponent } from './persona-page/persona-page.component';
 import { TestSteam1Component } from './Steam/test-steam1/test-steam1.component';
 import { TestSteamComponent } from './Steam/test-steam/test-steam.component';
 import { TestSteam2Component } from './Steam/test-steam2/test-steam2.component';
