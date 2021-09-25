@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
-  selector: 'edit-gamer-persona',
-  templateUrl: './edit-gamer-persona.component.html',
-  styleUrls: ['./edit-gamer-persona.component.css']
+  selector: 'edit-persona-nickname',
+  templateUrl: './edit-persona-nickname.component.html',
+  styleUrls: ['./edit-persona-nickname.component.css']
 })
-export class EditGamerPersonaComponent implements OnInit {
+export class EditPersonaNicknameComponent implements OnInit {
 
   newNickname: string = ''
   editMode: boolean = false

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditGamerPersonaComponent } from './edit-gamer-persona.component';
+import { DeleteAccountComponent } from './delete-account.component';
 
-describe('EditGamerPersonaComponent', () => {
-  let component: EditGamerPersonaComponent;
-  let fixture: ComponentFixture<EditGamerPersonaComponent>;
+describe('DeleteAccountComponent', () => {
+  let component: DeleteAccountComponent;
+  let fixture: ComponentFixture<DeleteAccountComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditGamerPersonaComponent ]
+      declarations: [ DeleteAccountComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditGamerPersonaComponent);
+    fixture = TestBed.createComponent(DeleteAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
