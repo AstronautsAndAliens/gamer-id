@@ -13,6 +13,8 @@ import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-button
 import { PersonaService } from './services/persona/persona.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchModule } from './components/modules/search/search.module';
+import { PrimaryButtonComponent } from './components/modules/shared/primary-button/primary-button.component';
+import { SharedModule } from './components/modules/shared/shared.module';
 
 // DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED IN OTHER MODULES
 @NgModule({
@@ -22,7 +24,7 @@ import { SearchModule } from './components/modules/search/search.module';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    AuthButtonsComponent
+    AuthButtonsComponent,
   ],
   imports: [
     BrowserModule,
