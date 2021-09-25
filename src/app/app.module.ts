@@ -10,7 +10,6 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthService } from './services/auth/auth.service';
-import { PrimaryButtonComponent } from './components/common/primary-button/primary-button.component';
 import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-buttons.component';
 import { PersonaService } from './services/persona/persona.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    PrimaryButtonComponent,
     AuthButtonsComponent
   ],
   imports: [
