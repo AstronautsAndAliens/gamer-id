@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
-import { SearchPageComponent } from './components/pages/search-page/search-page.component';
+import { SearchPageComponent } from './components/modules/search/search-page/search-page.component';
 
 //DEV NOTE || LAZY LOAD EVERYTHING EXCEPT LANDING PAGE
 const routes: Routes = [

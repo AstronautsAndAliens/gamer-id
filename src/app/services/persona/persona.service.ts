@@ -34,22 +34,19 @@ export class PersonaService {
       params: new HttpParams({ fromString: `?gamer_id=${this.gamerId}` })
     }
     this.http.get<any>(endpoint, options).subscribe(persona => {
-      console.log(persona)
       this.persona = persona
-      console.log(persona.nickname)
       this.persona$.next(persona)
       this.nickname = of(persona.nickname)
     })
   }
 
   updatePersonaNickname = async (nickname: string) => {
-    console.log(nickname)
     // this.nickname = nickname
     const endpoint = `/.netlify/functions/update-persona-nickname`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${this.gamerId}&nickname=${nickname}` })
     }
-    await this.http.get<any>(endpoint, options).subscribe(r => console.log(r))
+    await this.http.get<any>(endpoint, options)
     await this.getPersona()
   }
 }
