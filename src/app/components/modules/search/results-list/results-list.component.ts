@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'results-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsListComponent implements OnInit {
 
-  constructor() { }
+  personas: any[] = []
+
+  constructor(
+    private searchService: SearchService
+  ) { }
 
   ngOnInit(): void {
+    this.searchService.search()
   }
 
 }
