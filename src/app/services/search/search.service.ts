@@ -14,6 +14,6 @@ export class SearchService {
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${filters.searchBarValue}` })
     }
-    this.http.get<any>(endpoint, options)
+    this.http.get<any>(endpoint, options).subscribe(result => {console.log(result)})
   }
 }
