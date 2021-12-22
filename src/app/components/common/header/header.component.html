@@ -8,7 +8,7 @@
       <!-- move to right side, replace with setting cog wheel -->
       <span><a routerLink="/settings">Settings</a></span>
       <!-- only visible when logged in, go to user's persona page -->
-      <span><a routerLink="/persona/test">Persona</a></span>
+      <span><button (click)="onClickMyPersona()">MyPersona</button></span>
       <auth-buttons></auth-buttons>
     </span>
 </nav>

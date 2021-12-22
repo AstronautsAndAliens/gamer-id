@@ -1,4 +1,5 @@
-<ul *ngIf="personaService.persona$ | async as persona">
+<ul *ngIf="personaService.persona$ | async">
   <li>basic personaSrvc.persona info</li>
   <li>{{ personaService.gamerId }}</li>
+  <li>{{ personaService.nickname$ | async }}</li>
 </ul>

@@ -11,9 +11,10 @@ export class SearchService {
 
   search = (filters?:any):any => {
     const endpoint = `/.netlify/functions/search-personas`
-    const options = {
-      params: new HttpParams({ fromString: `?gamer_id=${filters.searchBarValue}` })
+    const options: any = {}
+    if(filters?.nickname) { 
+      options.params = new HttpParams({ fromString: `?nickname=${filters.nickname}` })
     }
-    this.http.get<any>(endpoint, options).subscribe(result => {console.log(result)})
+    return this.http.get<any>(endpoint, options)
   }
 }

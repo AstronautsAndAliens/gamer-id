@@ -10,7 +10,7 @@ export class PersonaService {
 
   gamerId: string = ''
   persona$: any = new Subject<any>()
-  nickname: any
+  nickname$: any = new Subject<string>()
 
   constructor(
     private http: HttpClient,
@@ -26,14 +26,14 @@ export class PersonaService {
     })
   }
 
-  private getPersona = (gamerId: string) => {
+  getPersona = (gamerId: string) => {
     const endpoint = `/.netlify/functions/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
     }
     this.http.get<any>(endpoint, options).subscribe(persona => {
       this.persona$.next(persona)
-      this.nickname = of(persona.nickname)
+      this.nickname$.next(persona.nickname)
     })
   }
 
@@ -47,4 +47,5 @@ export class PersonaService {
     await this.http.get<any>(endpoint, options)
     await this.getPersona(this.gamerId)
   }
+
 }

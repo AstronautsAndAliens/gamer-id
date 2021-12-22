@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'search', component: SearchPageComponent }, //search results list and filtering
   { path: 'persona', pathMatch: 'full', redirectTo: '/search'},
   { 
-    path: 'persona/:personaId',  //a players unique page
+    path: 'persona/:nickname',  //a players unique page
     loadChildren: () => import('./components/modules/persona/persona.module').then(m => m.PersonaModule) //lazy load to keep massive components list and services seperate
   },
   // { path: 'settings', component:  SettingsPageComponent }, //site and account settings & dashboard

@@ -1,6 +1,9 @@
-<p>test</p>
-<ul *ngfor="persona of personas">
-    <li></li>
-    <li></li>
-    <hr>
-</ul>
+
+<ng-container *ngIf="personas.length != 0">
+    <ul *ngFor="let persona of personas">
+        <li>{{ persona.id }}</li>
+        <li>{{ persona.nickname }}</li>
+        <button (click)="onClickNickname(persona.nickname)">Go To Persona</button>
+        <hr>
+    </ul>
+</ng-container>

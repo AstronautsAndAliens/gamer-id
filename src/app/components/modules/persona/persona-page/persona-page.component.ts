@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PersonaPageComponent implements OnInit {
 
-  personaId: string = ''
+  nickname: string = ''
 
   constructor(
     private route: ActivatedRoute
@@ -16,7 +16,7 @@ export class PersonaPageComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.personaId = params['personaId']
+      this.nickname = params['nickname']
     })
   }
 

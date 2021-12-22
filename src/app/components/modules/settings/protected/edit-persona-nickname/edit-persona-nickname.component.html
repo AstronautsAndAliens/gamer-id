@@ -1,10 +1,10 @@
 <ng-container *ngIf="!editMode else editDisplay">
-    <p>{{ personaService.nickname | async }}</p>
+    <p>{{ personaService.nickname$ | async }}</p>
     <primary-button [onClick]="clickEdit" label="edit"></primary-button>
 </ng-container>
 
 <ng-template #editDisplay>
-    <input type="text" [value]="personaService.nickname | async" (change)="inputChange($event)">
+    <input type="text" [value]="personaService.nickname$ | async" (change)="inputChange($event)">
     <primary-button [onClick]="clickSave" label="save"></primary-button>
     <primary-button [onClick]="clickCancel" label="cancel"></primary-button>
 </ng-template>
