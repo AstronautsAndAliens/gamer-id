@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map, tap } from 'rxjs/operators';
+import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 import { NavService } from 'src/app/services/nav/nav.service';
-import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
   selector: 'header',
@@ -12,13 +13,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private navService: NavService, 
-    private personaService: PersonaService
+    private authUserService: AutherizedPersonaService
   ) { }
 
   ngOnInit(): void {
   }
 
-  onClickMyPersona(){
-    this.personaService.nickname$.subscribe((nickname: string) => this.navService.navigateToPersona(nickname))
+  onClickMyPersona(): void {
+    this.navService.navigateToPersona(this.authUserService.nickname)
   }
 }

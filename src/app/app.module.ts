@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { AuthService } from './services/auth/auth.service';
+import { AutherizedPersonaService } from './services/auth/auth.service';
 import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-buttons.component';
 import { PersonaService } from './services/persona/persona.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,7 +37,7 @@ import { SharedModule } from './components/modules/shared/shared.module';
     SearchModule
   ],
   providers: [
-    AuthService,
+    AutherizedPersonaService,
     PersonaService
   ],
   bootstrap: [AppComponent]

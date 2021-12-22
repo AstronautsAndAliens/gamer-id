@@ -1,51 +1,46 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService as Auth0Service } from '@auth0/auth0-angular';
-import { Observable, of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
 
-  gamerId: string = ''
+  //the whole object
   persona$: any = new Subject<any>()
+  //parts of the whole
   nickname$: any = new Subject<string>()
 
   constructor(
-    private http: HttpClient,
-    private auth0: Auth0Service
+    private http: HttpClient
   ) {
-    this.auth0.idTokenClaims$.subscribe(claims => {
-      if (claims && claims['https://gamer_id']) {
-        this.gamerId = claims['https://gamer_id']
-        this.getPersona(this.gamerId)
-      } else {
-        console.error('gamer_id not returned from auth0')
-      }
-    })
+   
   }
 
-  getPersona = (gamerId: string) => {
+  getPersona = (gamerId: string): any => {
+    //if gamerId matches autherized user gamerId, return data from authorized user without making api call
     const endpoint = `/.netlify/functions/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
     }
-    this.http.get<any>(endpoint, options).subscribe(persona => {
+    return this.http.get<any>(endpoint, options).pipe(map(persona => {
       this.persona$.next(persona)
       this.nickname$.next(persona.nickname)
-    })
+      return persona
+    }))
   }
 
   //consumed by template
-  updatePersonaNickname = async (nickname: string) => {
+  updatePersonaNickname = async (gamerId: string, nickname: string) => {
     // this.nickname = nickname
     const endpoint = `/.netlify/functions/update-persona-nickname`
     const options = {
-      params: new HttpParams({ fromString: `?gamer_id=${this.gamerId}&nickname=${nickname}` })
+      params: new HttpParams({ fromString: `?gamer_id=${gamerId}&nickname=${nickname}` })
     }
     await this.http.get<any>(endpoint, options)
-    await this.getPersona(this.gamerId)
+    await this.getPersona(gamerId)
   }
 
 }

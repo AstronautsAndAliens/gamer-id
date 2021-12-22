@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 import { of } from 'rxjs';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'auth-buttons',
@@ -14,7 +14,7 @@ export class AuthButtonsComponent implements OnInit {
 
   constructor(
     public auth: Auth0Service,
-    private authService: AuthService
+    private authService: AutherizedPersonaService
   ) { }
 
   ngOnInit(): void {
