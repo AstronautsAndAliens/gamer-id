@@ -8,10 +8,9 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class PersonaService {
 
-  persona: any
   gamerId: string = ''
   persona$: any = new Subject<any>()
-  nickname: Observable<string> = of('')
+  nickname: any
 
   constructor(
     private http: HttpClient,
@@ -33,7 +32,6 @@ export class PersonaService {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
     }
     this.http.get<any>(endpoint, options).subscribe(persona => {
-      this.persona = persona
       this.persona$.next(persona)
       this.nickname = of(persona.nickname)
     })
