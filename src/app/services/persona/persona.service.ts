@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService as Auth0Service } from '@auth0/auth0-angular';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class PersonaService {
   persona: any
   gamerId: string = ''
   persona$: any = new Subject<any>()
-  nickname: any
+  nickname: Observable<string> = of('')
 
   constructor(
     private http: HttpClient,
@@ -20,17 +20,17 @@ export class PersonaService {
     this.auth0.idTokenClaims$.subscribe(claims => {
       if (claims && claims['https://gamer_id']) {
         this.gamerId = claims['https://gamer_id']
-        this.getPersona()
+        this.getPersona(this.gamerId)
       } else {
         console.error('gamer_id not returned from auth0')
       }
     })
   }
 
-  getPersona = () => {
+  private getPersona = (gamerId: string) => {
     const endpoint = `/.netlify/functions/get-persona`
     const options = {
-      params: new HttpParams({ fromString: `?gamer_id=${this.gamerId}` })
+      params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
     }
     this.http.get<any>(endpoint, options).subscribe(persona => {
       this.persona = persona
@@ -39,6 +39,7 @@ export class PersonaService {
     })
   }
 
+  //consumed by template
   updatePersonaNickname = async (nickname: string) => {
     // this.nickname = nickname
     const endpoint = `/.netlify/functions/update-persona-nickname`
@@ -46,6 +47,6 @@ export class PersonaService {
       params: new HttpParams({ fromString: `?gamer_id=${this.gamerId}&nickname=${nickname}` })
     }
     await this.http.get<any>(endpoint, options)
-    await this.getPersona()
+    await this.getPersona(this.gamerId)
   }
 }
