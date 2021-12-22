@@ -25,7 +25,7 @@ export class EditPersonaNicknameComponent implements OnInit {
 
   clickEdit = () => this.editMode = true
   clickCancel = () => this.editMode = false
-  clickSave = () => { this.personaService.updatePersonaNickname(this.authService.gamerId, this.newNickname); this.editMode = false }
+  clickSave = () => { this.authService.updatePersonaNickname(this.authService.gamerId, this.newNickname); this.editMode = false }
   inputChange = (event: any) => {
     this.newNickname = event.target.value
   }

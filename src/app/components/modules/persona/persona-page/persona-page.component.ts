@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
   selector: 'persona-page',
@@ -8,16 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PersonaPageComponent implements OnInit {
 
-  nickname: string = ''
-
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private personaService: PersonaService
     ) {}
   
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.nickname = params['nickname']
-    })
+    this.personaService.getPersonaByNickname(`${this.route.snapshot.paramMap.get('nickname')}`).subscribe()
   }
 
 }
