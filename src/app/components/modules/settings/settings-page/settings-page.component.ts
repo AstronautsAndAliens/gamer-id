@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'settings-page',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AutherizedPersonaService) { }
 
   ngOnInit(): void {
+    this.authService.getPersonaByGamerId(this.authService.gamerId).subscribe()
   }
 
 }

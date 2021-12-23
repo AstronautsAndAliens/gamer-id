@@ -13,8 +13,6 @@ export class PersonaService {
 
   //the whole object
   persona$: any = new Subject<any>()
-  //parts of the whole
-  nickname$: Observable<string> = of('')
 
   constructor(
     private http: HttpClient,
@@ -22,7 +20,7 @@ export class PersonaService {
   }
 
   //used by persona page
-  getPersonaByNickname = (nickname: string): Observable<any> => { 
+  getPersonaByNickname = (nickname: string): Observable<any> => {
     const endpoint = `${env.LAMBDA_API_URL}/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?nickname=${nickname}` })
@@ -30,7 +28,6 @@ export class PersonaService {
     return this.http.get<any>(endpoint, options).pipe(map(persona => {
       console.log('persona by nickname:', persona)
       this.persona$.next(persona)
-      this.nickname$ = of(persona.nickname)
       return persona
     }))
   }

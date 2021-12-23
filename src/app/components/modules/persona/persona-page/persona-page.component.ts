@@ -14,12 +14,11 @@ export class PersonaPageComponent implements OnInit {
     private route: ActivatedRoute,
     private personaService: PersonaService
     ) {}
-  
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('nickname'))
       this.personaService.getPersonaByNickname(`${params.get('nickname')}`).subscribe()
-    }) 
+    })
   }
 
 }
