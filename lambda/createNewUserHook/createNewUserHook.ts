@@ -18,11 +18,10 @@ export const handler: Handler = async (event: any, context: any) => {
     email,
     nickname: generateNickname()
   }
-  const uri = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net"
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  const client = new MongoClient(process.env['MONGODB_CONNECTION_STRING'], { useNewUrlParser: true, useUnifiedTopology: true })
 
   await client.connect()
-  await client.db("gamer-id-db").collection("persona").insertOne(newPersona)
+  await client.db(process.env['MONGODB_DB_NAME']).collection(process.env['MONGODB_COLLECTION_PERSONA']).insertOne(newPersona)
 
   return {
     statusCode: 200,
