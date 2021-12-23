@@ -12,12 +12,15 @@ export class EditPersonaNicknameComponent implements OnInit {
   newNickname: string = ''
   editMode: boolean = false
   setupMessage: string = 'Create a persona to continue account setup!'
+  nickname: string = ''
 
   constructor(
-    public personaService: PersonaService,
+    private personaService: PersonaService,
     private authService: AutherizedPersonaService
   ) {
-
+    this.personaService.persona$.subscribe((persona: any) => {
+      this.nickname = persona.nickname
+    })
   }
 
   ngOnInit(): void {

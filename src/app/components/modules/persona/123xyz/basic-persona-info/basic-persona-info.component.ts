@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
@@ -9,9 +8,15 @@ import { PersonaService } from 'src/app/services/persona/persona.service';
 })
 export class BasicPersonaInfoComponent implements OnInit {
 
+  nickname: string = ''
+
   constructor(
-    public personaService: PersonaService
-  ) { }
+    private personaService: PersonaService
+  ) {
+    this.personaService.persona$.subscribe((persona: any) => {
+      this.nickname = persona.nickname
+    })
+  }
 
   ngOnInit(): void {
   }

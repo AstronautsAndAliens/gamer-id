@@ -1,4 +1,4 @@
-<ul *ngIf="personaService.persona$ | async">
+<ul *ngIf="nickname != ''">
   <li>basic personaSrvc.persona info</li>
-  <li>nickname: {{ personaService.nickname$ | async }}</li>
+  <li>nickname: {{ nickname }}</li>
 </ul>

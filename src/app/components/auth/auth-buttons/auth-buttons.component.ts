@@ -13,7 +13,7 @@ export class AuthButtonsComponent implements OnInit {
   isAuthenticated = of(false)
 
   constructor(
-    public auth: Auth0Service,
+    private auth: Auth0Service,
     private authService: AutherizedPersonaService
   ) { }
 
