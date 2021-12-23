@@ -1,25 +1,21 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { AuthService as Auth0Service } from '@auth0/auth0-angular';
-import { Subject } from 'rxjs';
-import { environment as env } from '../../../environments/environment';
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { AuthService as Auth0Service } from '@auth0/auth0-angular'
+import { Subject } from 'rxjs'
+import { environment as env } from '../../../environments/environment'
 //This service is for managing authentication and currently logged in persona
 
 //AUTHENTICATION BROUGHT TO YOU BY AUTH0
 //https://auth0.com/docs/quickstart/spa/angular
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AutherizedPersonaService {
-
   gamerId: string = ''
   nickname: string = ''
   persona$ = new Subject<any>()
 
-  constructor(
-    private auth0: Auth0Service,
-    private http: HttpClient
-  ) {
+  constructor(private auth0: Auth0Service, private http: HttpClient) {
     this.auth0.idTokenClaims$.subscribe(claims => {
       if (claims && claims[env.AUTH0_GAMERID_CLAIM]) {
         this.gamerId = claims[env.AUTH0_GAMERID_CLAIM]
@@ -45,7 +41,7 @@ export class AutherizedPersonaService {
   getPersonaByGamerId = (gamerId: string): any => {
     const endpoint = `${env.LAMBDA_API_URL}/get-persona`
     const options = {
-      params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
+      params: new HttpParams({ fromString: `?gamer_id=${gamerId}` }),
     }
     return this.http.get<any>(endpoint, options)
   }
@@ -55,10 +51,11 @@ export class AutherizedPersonaService {
     // this.nickname = nickname
     const endpoint = `${env.LAMBDA_API_URL}/update-persona-nickname`
     const options = {
-      params: new HttpParams({ fromString: `?gamer_id=${gamerId}&nickname=${nickname}` })
+      params: new HttpParams({
+        fromString: `?gamer_id=${gamerId}&nickname=${nickname}`,
+      }),
     }
     await this.http.get<any>(endpoint, options)
     await this.getPersonaByGamerId(gamerId)
   }
-
 }
