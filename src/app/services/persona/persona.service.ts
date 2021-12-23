@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { environment as env } from '../../../environments/environment'
 
 //service is used to managed the displayed persona on the persona-page
 
@@ -22,7 +23,7 @@ export class PersonaService {
 
   //used by persona page
   getPersonaByNickname = (nickname: string): Observable<any> => { 
-    const endpoint = `/.netlify/functions/get-persona`
+    const endpoint = `${env.LAMBDA_API_URL}/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?nickname=${nickname}` })
     }

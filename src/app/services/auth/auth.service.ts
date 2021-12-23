@@ -43,7 +43,7 @@ export class AutherizedPersonaService {
 
   //only used by auth service
   getPersonaByGamerId = (gamerId: string): any => {
-    const endpoint = `/.netlify/functions/get-persona`
+    const endpoint = `${env.LAMBDA_API_URL}/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}` })
     }
@@ -53,7 +53,7 @@ export class AutherizedPersonaService {
   //consumed by template
   updatePersonaNickname = async (gamerId: string, nickname: string) => {
     // this.nickname = nickname
-    const endpoint = `/.netlify/functions/update-persona-nickname`
+    const endpoint = `${env.LAMBDA_API_URL}/update-persona-nickname`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}&nickname=${nickname}` })
     }
