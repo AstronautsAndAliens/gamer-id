@@ -16,7 +16,10 @@ export class PersonaPageComponent implements OnInit {
     ) {}
   
   ngOnInit(): void {
-    this.personaService.getPersonaByNickname(`${this.route.snapshot.paramMap.get('nickname')}`).subscribe()
+    this.route.paramMap.subscribe(params => {
+      console.log(params.get('nickname'))
+      this.personaService.getPersonaByNickname(`${params.get('nickname')}`).subscribe()
+    }) 
   }
 
 }
