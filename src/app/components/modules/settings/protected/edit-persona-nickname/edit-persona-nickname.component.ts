@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
-import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
   selector: 'edit-persona-nickname',
@@ -13,13 +12,14 @@ export class EditPersonaNicknameComponent implements OnInit {
   editMode: boolean = false
   setupMessage: string = 'Create a persona to continue account setup!'
   nickname: string = ''
+  gamerId: string = ''
 
   constructor(
-    private personaService: PersonaService,
     private authService: AutherizedPersonaService
   ) {
-    this.personaService.persona$.subscribe((persona: any) => {
+    this.authService.persona$.subscribe((persona: any) => {
       this.nickname = persona.nickname
+      this.gamerId = persona.gamer_id
     })
   }
 
@@ -28,7 +28,7 @@ export class EditPersonaNicknameComponent implements OnInit {
 
   clickEdit = () => this.editMode = true
   clickCancel = () => this.editMode = false
-  clickSave = () => { this.authService.updatePersonaNickname(this.authService.gamerId, this.newNickname); this.editMode = false }
+  clickSave = () => { this.authService.updatePersonaNickname(this.gamerId, this.newNickname); this.editMode = false }
   inputChange = (event: any) => {
     this.newNickname = event.target.value
   }

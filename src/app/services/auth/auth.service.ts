@@ -11,18 +11,18 @@ import { environment as env } from '../../../environments/environment'
   providedIn: 'root',
 })
 export class AutherizedPersonaService {
-  gamerId: string = ''
-  nickname: string = ''
+  // gamerId: string = ''
+  // nickname: string = ''
   persona$ = new Subject<any>()
 
   constructor(private auth0: Auth0Service, private http: HttpClient) {
     this.auth0.idTokenClaims$.subscribe(claims => {
       if (claims && claims[env.AUTH0_GAMERID_CLAIM]) {
-        this.gamerId = claims[env.AUTH0_GAMERID_CLAIM]
-        this.getPersonaByGamerId(this.gamerId).subscribe((persona: any) => {
+        const gamerId = claims[env.AUTH0_GAMERID_CLAIM]
+        this.getPersonaByGamerId(gamerId).subscribe((persona: any) => {
           console.log('logged in persona:', persona)
-          this.gamerId = persona.gamer_id
-          this.nickname = persona.nickname
+          // this.gamerId = persona.gamer_id
+          // this.nickname = persona.nickname
           this.persona$.next(persona)
         })
       } else {
