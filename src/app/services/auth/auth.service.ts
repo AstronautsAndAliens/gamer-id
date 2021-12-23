@@ -1,10 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Injectable } from '@angular/core';
 import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 import { Subject } from 'rxjs';
-import { PersonaService } from '../persona/persona.service';
-
+import { environment as env } from '../../../environments/environment';
 //This service is for managing authentication and currently logged in persona
 
 //AUTHENTICATION BROUGHT TO YOU BY AUTH0
@@ -23,8 +21,8 @@ export class AutherizedPersonaService {
     private http: HttpClient
   ) {
     this.auth0.idTokenClaims$.subscribe(claims => {
-      if (claims && claims['https://gamer_id']) {
-        this.gamerId = claims['https://gamer_id']
+      if (claims && claims[env.AUTH0_GAMERID_CLAIM]) {
+        this.gamerId = claims[env.AUTH0_GAMERID_CLAIM]
         this.getPersonaByGamerId(this.gamerId).subscribe((persona: any) => {
           console.log('logged in persona:', persona)
           this.gamerId = persona.gamer_id

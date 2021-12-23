@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { environment as env } from '../environments/environment'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
@@ -13,8 +15,6 @@ import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-button
 import { PersonaService } from './services/persona/persona.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchModule } from './components/modules/search/search.module';
-import { PrimaryButtonComponent } from './components/modules/shared/primary-button/primary-button.component';
-import { SharedModule } from './components/modules/shared/shared.module';
 
 // DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED IN OTHER MODULES
 @NgModule({
@@ -31,8 +31,8 @@ import { SharedModule } from './components/modules/shared/shared.module';
     HttpClientModule,
     AppRoutingModule,
     AuthModule.forRoot({
-      domain: 'dev-wz5rreaa.us.auth0.com',
-      clientId: 'JEdJ7OiX4dPFILPKyjDKji1q61aLxBAa'
+      domain: env.AUTH0_DOMAIN,
+      clientId: env.AUTH0_CLIENT_ID
     }),
     SearchModule
   ],
