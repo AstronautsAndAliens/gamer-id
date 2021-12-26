@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IPersona } from 'src/app/models/persona.model';
 import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 import { NavService } from 'src/app/services/nav/nav.service';
 
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
     private navService: NavService,
     private authService: AutherizedPersonaService
   ) {
-    this.authService.persona$.subscribe((persona: any) => {
+    this.authService.persona$.subscribe((persona: IPersona) => {
       this.nickname = persona.nickname
     })
   }

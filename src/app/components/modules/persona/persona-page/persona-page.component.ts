@@ -1,6 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ISearchFilters } from 'src/app/models/search.model';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
@@ -16,8 +16,11 @@ export class PersonaPageComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.personaService.getPersonaByNickname(`${params.get('nickname')}`).subscribe()
+    this.route.paramMap.subscribe((params) => {
+      const filters: ISearchFilters = {
+        nickname: params.get('nickname') || ''
+      }
+      this.personaService.getPersonaByNickname(`${filters.nickname}`).subscribe()
     })
   }
 

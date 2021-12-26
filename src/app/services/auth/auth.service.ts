@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { AuthService as Auth0Service } from '@auth0/auth0-angular'
-import { Subject } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { IPersona } from '../../models/persona.model'
 import { environment as env } from '../../../environments/environment'
 //This service is for managing authentication and currently logged in persona
 
@@ -12,7 +13,7 @@ import { environment as env } from '../../../environments/environment'
   providedIn: 'root',
 })
 export class AutherizedPersonaService {
-  persona$ = new Subject<any>()
+  persona$ = new Subject<IPersona>()
   gamerId: string = ''
 
   constructor(private auth0: Auth0Service, private http: HttpClient) {
@@ -21,7 +22,7 @@ export class AutherizedPersonaService {
         const gamerId = claims[env.AUTH0_GAMERID_CLAIM]
         this.getPersonaByGamerId(gamerId).subscribe()
       } else {
-        console.error('gamer_id not returned from auth0')
+        console.error('gamer_id not returned from auth0, user may not be logged in')
       }
     })
   }
@@ -33,13 +34,12 @@ export class AutherizedPersonaService {
   isAuthenticated = this.auth0.isAuthenticated$
 
   //only used by auth service
-  getPersonaByGamerId = (gamerId: string): any => {
+  getPersonaByGamerId = (gamerId: string): Observable<IPersona> => {
     const endpoint = `${env.LAMBDA_API_URL}/get-persona`
     const options = {
       params: new HttpParams({ fromString: `?gamer_id=${gamerId}` }),
     }
-    return this.http.get<any>(endpoint, options).pipe(map((persona: any) => {
-      console.log('get user by gamerid')
+    return this.http.get<IPersona>(endpoint, options).pipe(map((persona: IPersona) => {
       this.persona$.next(persona)
       this.gamerId = persona.gamer_id
       return persona

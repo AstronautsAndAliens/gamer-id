@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 
 @Component({

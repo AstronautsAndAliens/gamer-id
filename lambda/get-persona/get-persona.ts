@@ -1,4 +1,5 @@
 import { Handler } from '@netlify/functions'
+import { IPersona } from 'src/app/models/persona.model'
 const { MongoClient } = require('mongodb')
 
 export const handler: Handler = async (event:any, _context:any) => {
@@ -8,8 +9,7 @@ export const handler: Handler = async (event:any, _context:any) => {
   const query:any = {}
   if(gamer_id != ''){ query.gamer_id = gamer_id } //gamer_id overrides nickname if provided
   else if(nickname != ''){ query.nickname = nickname}
-  console.log('query', query)
-  const persona = await client.db(process.env['MONGODB_DB_NAME']).collection(process.env['MONGODB_COLLECTION_PERSONA']).findOne(query)
+  const persona: IPersona = await client.db(process.env['MONGODB_DB_NAME']).collection(process.env['MONGODB_COLLECTION_PERSONA']).findOne(query)
   console.log('persona found!', persona)
   return {
     statusCode: 200,

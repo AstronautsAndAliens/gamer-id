@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IPersona } from 'src/app/models/persona.model';
 import { PersonaService } from 'src/app/services/persona/persona.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class BasicPersonaInfoComponent implements OnInit {
   constructor(
     private personaService: PersonaService
   ) {
-    this.personaService.persona$.subscribe((persona: any) => {
+    this.personaService.persona$.subscribe((persona: IPersona) => {
       this.nickname = persona.nickname
     })
   }

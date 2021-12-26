@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 import { of } from 'rxjs';
 import { AutherizedPersonaService } from 'src/app/services/auth/auth.service';
 
@@ -13,7 +12,6 @@ export class AuthButtonsComponent implements OnInit {
   isAuthenticated = of(false)
 
   constructor(
-    private auth: Auth0Service,
     private authService: AutherizedPersonaService
   ) { }
 

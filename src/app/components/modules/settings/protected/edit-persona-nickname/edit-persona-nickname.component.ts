@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core'
+import { IPersona } from 'src/app/models/persona.model'
 import { AutherizedPersonaService } from 'src/app/services/auth/auth.service'
 
 @Component({
@@ -17,10 +18,10 @@ export class EditPersonaNicknameComponent implements OnInit {
   constructor(private authService: AutherizedPersonaService) {}
 
   ngOnInit(): void {
-    this.authService.persona$.subscribe((persona: any) => {
+    this.authService.persona$.subscribe((persona: IPersona) => {
       console.log('edit component', persona.nickname)
       this.nickname = persona.nickname
-      this.gamerId = persona.gamerId
+      this.gamerId = persona.gamer_id
     })
   }
 
