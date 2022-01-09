@@ -10,7 +10,8 @@ import { SteamService } from 'src/app/services/steam/steam.service'
   styleUrls: ['./player-summary.component.css'],
 })
 export class PlayerSummaryComponent implements OnInit {
-  dataReturned: boolean = false
+  dataFetched: boolean = false
+  dataFound: boolean = true
   steamPersonaName: string = ''
   steamAvatarUrl: string = ''
 
@@ -23,9 +24,14 @@ export class PlayerSummaryComponent implements OnInit {
     this.personaService.persona$.subscribe((persona: IPersona) =>{
       if(persona.steam_id) {
         this.steamService.getSteamPlayerSummary(persona.steam_id).pipe(map(steam_data => {
-          this.steamPersonaName = steam_data.personaname
-          this.steamAvatarUrl = steam_data.avatarfull
-          this.dataReturned = true
+          console.log(steam_data)
+          if(steam_data){
+            this.steamPersonaName = steam_data.personaname
+            this.steamAvatarUrl = steam_data.avatarfull
+          } else {
+            this.dataFound = false
+          }
+          this.dataFetched = true
         })).subscribe()
       }
     })

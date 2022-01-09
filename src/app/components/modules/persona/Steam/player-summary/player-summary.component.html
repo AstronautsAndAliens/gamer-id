@@ -1,4 +1,14 @@
-<ng-container *ngIf="dataReturned">
-  <div>personaname: {{steamPersonaName}}</div>
-  <img src="{{steamAvatarUrl}}" alt="alt_img">
+<ng-container *ngIf="dataFetched else loading">
+  <ng-container *ngIf="dataFound else dataNotFound">
+    <div>personaname: {{steamPersonaName}}</div>
+    <img src="{{steamAvatarUrl}}" alt="alt_img">
+  </ng-container>
 </ng-container>
+
+<ng-template #loading>
+  fetching data...
+</ng-template>
+
+<ng-template #dataNotFound>
+  No steam id linked to this persona or the linked steam_id failed to return data. Double check the linked steam_id number.
+</ng-template>
