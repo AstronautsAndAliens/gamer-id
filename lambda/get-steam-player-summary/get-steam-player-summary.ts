@@ -5,7 +5,7 @@ export const handler: Handler = async (event: any, _context: any) => {
   const { steam_id = '' } = event.queryStringParameters
   try {
     const { data } = await axios.get(`http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env['STEAM_KEY']}&steamids=${steam_id}`)
-    console.log('steam player summary found:', data.response.players[0])
+    // console.log('steam player summary found:', data.response.players[0])
     //good response
     return {
       statusCode: 200,

@@ -27,7 +27,6 @@ export class PersonaService {
       params: new HttpParams({ fromString: `?nickname=${nickname}` })
     }
     return this.http.get<IPersona>(endpoint, options).pipe(map(persona => {
-      console.log('persona by nickname:', persona)
       this.persona$.next(persona)
       return persona
     }))

@@ -8,6 +8,7 @@ import { TestSteam2Component } from './Steam/test-steam2/test-steam2.component';
 import { TestBlizzard1Component } from './Blizzard/test-blizzard1/test-blizzard1.component';
 import { TestBlizzard2Component } from './Blizzard/test-blizzard2/test-blizzard2.component';
 import { BasicPersonaInfoComponent } from './123xyz/basic-persona-info/basic-persona-info.component';
+import { PlayerSummaryComponent } from './Steam/player-summary/player-summary.component';
 
 
 
@@ -19,7 +20,8 @@ import { BasicPersonaInfoComponent } from './123xyz/basic-persona-info/basic-per
     TestSteam1Component,
     TestSteam2Component,
     TestBlizzard1Component,
-    TestBlizzard2Component
+    TestBlizzard2Component,
+    PlayerSummaryComponent
   ],
   imports: [
     CommonModule,
