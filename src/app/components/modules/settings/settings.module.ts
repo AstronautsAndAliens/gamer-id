@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { EditPersonaNicknameComponent } from './protected/edit-persona-nickname/edit-persona-nickname.component';
 import { DeleteAccountComponent } from './protected/delete-account/delete-account.component';
 import { SharedModule } from '../shared/shared.module';
+import { EditSteamIdComponent } from './protected/edit-steam-id/edit-steam-id.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     BasicSettingsComponent,
     // PrimaryButtonComponent,
     EditPersonaNicknameComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    EditSteamIdComponent
   ],
   imports: [
     SharedModule,

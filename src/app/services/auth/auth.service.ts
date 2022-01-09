@@ -46,8 +46,8 @@ export class AutherizedPersonaService {
     }))
   }
 
-  //consumed by template
-  updatePersonaNickname = async (gamerId: string, nickname: string) => {
+  //used by settings module
+  updateNicknameByGamerId = async (gamerId: string, nickname: string) => {
     // this.nickname = nickname
     const endpoint = `${env.LAMBDA_API_URL}/update-persona-nickname`
     const options = {
@@ -56,6 +56,19 @@ export class AutherizedPersonaService {
       }),
     }
     await this.http.get<any>(endpoint, options).subscribe()
-    await this.getPersonaByGamerId(gamerId)
+    await this.getPersonaByGamerId(gamerId).subscribe()
   }
+
+  updateSteamIdByGamerId = async (gamerId: string, steamId: string) => {
+    // this.nickname = nickname
+    const endpoint = `${env.LAMBDA_API_URL}/update-persona-steam-id`
+    const options = {
+      params: new HttpParams({
+        fromString: `?gamer_id=${gamerId}&steam_id=${steamId}`,
+      }),
+    }
+    await this.http.get<any>(endpoint, options).subscribe()
+    await this.getPersonaByGamerId(gamerId).subscribe()
+  }
+
 }

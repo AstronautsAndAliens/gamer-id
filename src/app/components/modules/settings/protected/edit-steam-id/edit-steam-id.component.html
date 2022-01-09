@@ -1,0 +1,11 @@
+<ng-container *ngIf="(!editMode && steamId != '') else editDisplay">
+  <p>{{ steamId }}</p>
+  <primary-button [onClick]="clickEdit" label="edit"></primary-button>
+</ng-container>
+
+<ng-template #editDisplay>
+  <div>Add Steam Account</div>
+  <input type="text" [value]="steamId" (change)="inputChange($event)">
+  <primary-button [onClick]="clickSave" label="save"></primary-button>
+  <primary-button [onClick]="clickCancel" label="cancel"></primary-button>
+</ng-template>
