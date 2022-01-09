@@ -14,7 +14,7 @@ import { IPersona } from 'src/app/models/persona.model'
 //connected to Auth0, Auth Pipeline, Hook, Post-User Registration
 //endpoint should be called everytime a new user is registered with auth0 db
 //saves information from auth0 user to db to begin account setup
-export const handler: Handler = async (event: any, context: any) => {
+export const handler: Handler = async (event: any, _context) => {
   //these values come from a post-registration action on auth0 side, controlled by dashboard
   const {
     user_id = '',

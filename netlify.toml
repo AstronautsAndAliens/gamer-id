@@ -6,6 +6,11 @@
   MONGODB_DB_NAME = "gamer-id-db"
   MONGODB_COLLECTION_PERSONA = "persona"
   STEAM_KEY = "CBC774928647ACFE4C299402467BE8F5"
+[production.environment]
+  MONGODB_CONNECTION_STRING = "mongodb+srv://admin:r6L9wGfIsuILdZVI@cluster0.acggh.mongodb.net"
+  MONGODB_DB_NAME = "gamer-id-db"
+  MONGODB_COLLECTION_PERSONA = "persona"
+  STEAM_KEY = "CBC774928647ACFE4C299402467BE8F5"
 [dev]
   publish = "dist/gamer-id-browser"
   command = "ng serve"
