@@ -38,6 +38,7 @@ export const handler: Handler = async (event: any, context: any) => {
     .db(process.env['MONGODB_DB_NAME'])
     .collection(process.env['MONGODB_COLLECTION_PERSONA'])
     .insertOne(newPersona)
+  console.log('new user created!', newPersona)
   return {
     statusCode: 200,
     body: JSON.stringify({
