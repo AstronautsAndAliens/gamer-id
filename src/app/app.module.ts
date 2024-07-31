@@ -13,33 +13,27 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { AutherizedPersonaService } from './services/auth/auth.service';
 import { AuthButtonsComponent } from './components/auth/auth-buttons/auth-buttons.component';
 import { PersonaService } from './services/persona/persona.service';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SearchModule } from './components/modules/search/search.module';
 
 // DEVELOPER NOTE: ONLY ADD THINGS TO THIS FILE NEEDED FOR LANDING, EVERYTHING ELSE CAN BE LAZY LOADED IN OTHER MODULES
-@NgModule({
-  declarations: [
-    AppComponent,
-    LandingPageComponent,
-    HeaderComponent,
-    FooterComponent,
-    PageNotFoundComponent,
-    AuthButtonsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    AuthModule.forRoot({
-      domain: env.AUTH0_DOMAIN,
-      clientId: env.AUTH0_CLIENT_ID
-    }),
-    SearchModule
-  ],
-  providers: [
-    AutherizedPersonaService,
-    PersonaService
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LandingPageComponent,
+        HeaderComponent,
+        FooterComponent,
+        PageNotFoundComponent,
+        AuthButtonsComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        AuthModule.forRoot({
+            domain: env.AUTH0_DOMAIN,
+            clientId: env.AUTH0_CLIENT_ID
+        }),
+        SearchModule], providers: [
+        AutherizedPersonaService,
+        PersonaService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
